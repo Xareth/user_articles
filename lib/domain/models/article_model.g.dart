@@ -9,7 +9,7 @@ part of 'article_model.dart';
 ArticleModel _$ArticleModelFromJson(Map<String, dynamic> json) => ArticleModel(
       id: json['id'] as int,
       authorId: json['authorId'] as int,
-      content: json['content'] as int,
+      content: json['content'] as String,
     );
 
 Map<String, dynamic> _$ArticleModelToJson(ArticleModel instance) =>

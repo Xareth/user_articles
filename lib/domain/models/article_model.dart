@@ -17,7 +17,7 @@ class ArticleModel {
   final int authorId;
 
   @JsonKey(name: 'content')
-  final int content;
+  final String content;
 
   factory ArticleModel.fromJson(Map<String, dynamic> json) =>
       _$ArticleModelFromJson(json);
