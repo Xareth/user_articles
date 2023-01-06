@@ -7,6 +7,7 @@ import 'package:user_articles/domain/models/author_model.dart';
 import 'package:user_articles/domain/repositories/articles_repository.dart';
 import 'package:user_articles/features/articles/cubit/articles_cubit.dart';
 import 'package:dio/dio.dart';
+import 'package:user_articles/app/injection_container.dart';
 
 class ArticlesPage extends StatelessWidget {
   const ArticlesPage({
@@ -23,11 +24,8 @@ class ArticlesPage extends StatelessWidget {
         title: Text(author.name),
       ),
       body: BlocProvider<ArticlesCubit>(
-        create: (context) => ArticlesCubit(
-          articlesRepository: ArticlesRepository(
-            remoteDataSource: ArticlesRemoteRetrofitDataSource(Dio()),
-          ),
-        )..fetchData(
+        create: (context) => getIt()
+          ..fetchData(
             authorId: author.id,
           ),
         child: Column(

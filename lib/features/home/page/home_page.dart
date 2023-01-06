@@ -7,6 +7,7 @@ import 'package:user_articles/domain/repositories/authors_repository.dart';
 import 'package:user_articles/features/articles/page/articles_page.dart';
 import 'package:user_articles/features/home/cubit/home_cubit.dart';
 import 'package:dio/dio.dart';
+import 'package:user_articles/app/injection_container.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({
@@ -18,11 +19,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: BlocProvider<HomeCubit>(
         create: (context) {
-          return HomeCubit(
-            authorsRepository: AuthorsRepository(
-              remoteDataSource: AuthorsRemoteRetrofitDataSource(Dio()),
-            ),
-          )..start();
+          return getIt()..start();
         },
         child: BlocBuilder<HomeCubit, HomeState>(
           builder: (context, state) {
