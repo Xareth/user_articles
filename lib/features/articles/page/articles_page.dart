@@ -6,6 +6,7 @@ import 'package:user_articles/domain/models/article_model.dart';
 import 'package:user_articles/domain/models/author_model.dart';
 import 'package:user_articles/domain/repositories/articles_repository.dart';
 import 'package:user_articles/features/articles/cubit/articles_cubit.dart';
+import 'package:dio/dio.dart';
 
 class ArticlesPage extends StatelessWidget {
   const ArticlesPage({
@@ -24,7 +25,7 @@ class ArticlesPage extends StatelessWidget {
       body: BlocProvider<ArticlesCubit>(
         create: (context) => ArticlesCubit(
           articlesRepository: ArticlesRepository(
-            remoteDataSource: ArticlesRemoteDioDataSource(),
+            remoteDataSource: ArticlesRemoteRetrofitDataSource(Dio()),
           ),
         )..fetchData(
             authorId: author.id,
