@@ -1,7 +1,6 @@
 import 'package:user_articles/data/remote_data_sources/articles_remote_data_source.dart';
 import 'package:user_articles/domain/models/article_model.dart';
 
-
 class ArticlesRepository {
   ArticlesRepository({required this.remoteDataSource});
 
@@ -12,11 +11,6 @@ class ArticlesRepository {
     if (json == null) {
       return [];
     }
-    final allArticles =
-        json.map((item) => ArticleModel.fromJson(item)).toList();
-
-    return allArticles
-        .where((element) => element.authorId == authorId)
-        .toList();
+    return json.map((item) => ArticleModel.fromJson(item)).toList();
   }
 }
