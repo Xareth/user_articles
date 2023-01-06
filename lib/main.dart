@@ -19,3 +19,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+// http://my-json-server.typicode.com/adamsmaka/json-demo/users
+// http://my-json-server.typicode.com/adamsmaka/json-demo/articles
