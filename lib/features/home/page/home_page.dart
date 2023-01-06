@@ -6,6 +6,7 @@ import 'package:user_articles/domain/models/author_model.dart';
 import 'package:user_articles/domain/repositories/authors_repository.dart';
 import 'package:user_articles/features/articles/page/articles_page.dart';
 import 'package:user_articles/features/home/cubit/home_cubit.dart';
+import 'package:dio/dio.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({
@@ -19,7 +20,7 @@ class HomePage extends StatelessWidget {
         create: (context) {
           return HomeCubit(
             authorsRepository: AuthorsRepository(
-              remoteDataSource: AuthorsRemoteDioDataSource(),
+              remoteDataSource: AuthorsRemoteRetrofitDataSource(Dio()),
             ),
           )..start();
         },
