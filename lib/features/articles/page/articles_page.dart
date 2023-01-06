@@ -24,7 +24,7 @@ class ArticlesPage extends StatelessWidget {
         title: Text(author.name),
       ),
       body: BlocProvider<ArticlesCubit>(
-        create: (context) => getIt()
+        create: (context) => getIt<ArticlesCubit>()
           ..fetchData(
             authorId: author.id,
           ),
